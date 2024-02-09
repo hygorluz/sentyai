@@ -1,0 +1,35 @@
+# Brief summary of exposed ports and services:
+# sentiments  -  8081/tcp
+
+version: '3.11'
+
+services:
+
+  # Sentiment Module
+  senty-ai:
+    container_name: senty-ai
+    hostname: senty-ai
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      DRY_RUN: "False"
+      MONGODB_URI: mongodb://playwright_mongo:27017
+    ports:
+      - "8080:8080"   # Port not used
+    links:
+      - sentiment_mongo
+    volumes:
+      - ./:/usr/src/app/:rw
+
+  # MongoDB Server
+  sentiment_mongo:
+    container_name: sentiment_mongo
+    image: mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root

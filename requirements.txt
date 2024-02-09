@@ -1,0 +1,21 @@
+# REQUIREMENTS FILE
+
+# Service requirements
+pydantic~=2.5.2
+uvicorn~=0.24.0
+pymongo~=4.3.3
+fastapi~=0.104.1
+gunicorn~=21.2.0
+str2bool~=1.1
+pyhumps~=3.8.0
+
+# Tests requirements
+yapf~=0.40.2
+flake8~=6.1
+pylint~=3.0.2
+pylint-pydantic~=0.3.1
+flake8-bugbear~=23.9.16
+flake8-docstrings~=1.6.0
+coverage~=7.3.2
+unittest-xml-reporting~=3.2.0
+pep8-naming~=0.13.3

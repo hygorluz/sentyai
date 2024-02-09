@@ -1,0 +1,25 @@
+[tool.yapf]
+based_on_style = "pep8"
+spaces_before_comment = 2
+coalesce_brackets = true
+indent_width = 4
+column_limit = 119
+join_multiple_lines = true
+
+[tool.pylint]
+max-line-length = 119
+max-branches=15
+max-args=10
+max-attributes=10
+disable = [
+    "logging-fstring-interpolation",
+    "too-few-public-methods",
+    "no-self-argument"
+]
+ignore-paths = [
+    "tests/.*$",
+    "venv/.*$"
+]
+load-plugins = [
+    "pylint_pydantic"
+]

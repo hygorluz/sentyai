@@ -1,0 +1,82 @@
+{
+	"info": {
+		"_postman_id": "f9a3e7dd-481a-47c2-b463-edc8ee3388e1",
+		"name": "SentyAI API",
+		"description": "Service to calculate the sentiment of a list of messages.\n\nDocs:\n\n/doc",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27584810"
+	},
+	"item": [
+		{
+			"name": "Sentiments: /sentiments",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"messages\": [\n        {\n            \"id\": \"1\",\n            \"message\": \"Isso é muito bom!\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/sentiments",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"sentiments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sentiments: /health",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/health",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
