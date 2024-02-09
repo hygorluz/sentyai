@@ -28,5 +28,5 @@ def get_mongo_session(retry_attempts: int = 2):
 
 
 def store_sentiment_scores(sentiment_results: List[Sentiment]):
-    """Function responsible to store the sentiment score in the database"""
+    """Store the sentiment score in the database."""
     return None

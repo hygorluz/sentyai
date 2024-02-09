@@ -30,8 +30,7 @@ def health(response: Response):
     return return_obj
 
 
-def sentiments(requested_payload: MessagesPayloadList,
-               background_tasks: BackgroundTasks = None) -> SentimentResults:
+def sentiments(requested_payload: MessagesPayloadList, background_tasks: BackgroundTasks = None) -> SentimentResults:
     """Sentiment analysis service."""
     request_start_time: float = time.time()
     message_payload_length: int = len(requested_payload.messages) if requested_payload else 0
@@ -41,8 +40,8 @@ def sentiments(requested_payload: MessagesPayloadList,
     if requested_payload.messages and message_payload_length > configs.max_messages_per_request:
         raise HTTPException(status_code=400,
                             detail=f"Too many Messages! The max number of messages that can be sent per request is "
-                                   f"restricted to {configs.max_messages_per_request} "
-                                   f"but {len(requested_payload.messages)} were sent.")
+                            f"restricted to {configs.max_messages_per_request} "
+                            f"but {len(requested_payload.messages)} were sent.")
 
     # Calculate the sentiment score
     sentiment_results: List[Sentiment] = []

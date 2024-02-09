@@ -41,17 +41,16 @@ def create_application() -> FastAPI:
                       tags=["healthcheck"],
                       description="Healthcheck endpoint.")
 
-    app.add_api_route(
-        path="/sentiments",
-        name="sentiments",
-        endpoint=sentiments,
-        response_model=SentimentResults,
-        response_class=PrettyJSONResponse,
-        response_model_exclude_none=True,
-        methods=["POST"],
-        status_code=200,
-        tags=["sentiment"],
-        description="Calculate the sentiment of a list of messages")
+    app.add_api_route(path="/sentiments",
+                      name="sentiments",
+                      endpoint=sentiments,
+                      response_model=SentimentResults,
+                      response_class=PrettyJSONResponse,
+                      response_model_exclude_none=True,
+                      methods=["POST"],
+                      status_code=200,
+                      tags=["sentiment"],
+                      description="Calculate the sentiment of a list of messages")
 
     # Brands the app version in the response headers
     @app.middleware("http")

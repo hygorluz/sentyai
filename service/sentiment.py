@@ -8,8 +8,7 @@ from pydantic import ValidationError
 from service.schemas import Sentiment, MessageReference
 
 
-def calculate_sentiment(message_reference: MessageReference,
-                        use_cached_sentiment: bool) -> Sentiment | None:
+def calculate_sentiment(message_reference: MessageReference, use_cached_sentiment: bool) -> Sentiment | None:
     """Calculate the sentiment of a message.
 
     Params:
@@ -22,13 +21,11 @@ def calculate_sentiment(message_reference: MessageReference,
     start_time = time.time()
     sentiment_result: Optional[Sentiment] = None
     try:
-        sentiment_result = Sentiment(
-            id=message_reference.id,
-            message=message_reference.message,
-            sentiment='Positive',
-            score=0.99,
-            sentiment_updated_at=datetime.now().isoformat()
-        )
+        sentiment_result = Sentiment(id=message_reference.id,
+                                     message=message_reference.message,
+                                     sentiment='Positive',
+                                     score=0.99,
+                                     sentiment_updated_at=datetime.now().isoformat())
     except ValidationError as ex:
         logging.warning(
             "Sentiment object could not be parsed. The datasource did not return data. "
