@@ -6,7 +6,7 @@ The SentyAI is a sentiment analysis AI to classify messages in positive, negativ
 
 ## Endpoints
 
-- **/sentiment** - Generate the sentiment analysis of a message.
+- **/sentiments** - Generate the sentiment analysis of a message.
 - **/docs** - Swagger UI.
 - **/redoc** - ReDoc UI.
 - **/health** - Health checker endpoint.
