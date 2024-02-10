@@ -1,7 +1,7 @@
 # :robot: Senty AI: Sentiment Analysis
 
-Project created as part of the specialization in Fullstack Web Development to implement an Integrated Projects
-applications.
+Project created as part of the specialization in Fullstack Web Development to implement an Integrated Project
+application.
 The SentyAI is a sentiment analysis AI to classify messages in positive, negative or neutral.  
 
 ## Endpoints
