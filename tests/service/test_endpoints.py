@@ -1,5 +1,6 @@
 """Tests for the endpoints module."""
 from unittest import mock
+from unittest.mock import patch
 
 from fastapi.testclient import TestClient
 
@@ -13,7 +14,8 @@ _SENTIMENTS_URL = '/sentiments'
 class TestEndpoints(AbstractTestCase):
     """Test class for the endpoints' module."""
 
-    def test_health_success(self):
+    @patch('service.application.create_sentiment_analyzer')
+    def test_health_success(self, mock_obj):
         """Test the health endpoint in the happy scenario."""
         client = TestClient(create_application())
         response = client.get(_HEALTH_URL)

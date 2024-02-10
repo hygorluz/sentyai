@@ -8,20 +8,15 @@ _SENTIMENT_ANALYZER = None
 _SENTIMENT_ANALYZER_LOCK = RLock()
 
 
-def get_sentiment_analyzer():
-    analyzer = create_analyzer(task="sentiment", lang="pt")
-
-    return analyzer
-
-
-def get_mongo_connection():
+def create_sentiment_analyzer():
     """Create the Mongo connection."""
     global _SENTIMENT_ANALYZER  # pylint: disable=global-statement
     if not _SENTIMENT_ANALYZER:
         with _SENTIMENT_ANALYZER_LOCK:
             if not _SENTIMENT_ANALYZER:
-                _MONGO_CONNECTION = get_sentiment_analyzer()
-    return _MONGO_CONNECTION
+                _SENTIMENT_ANALYZER = create_analyzer(task="sentiment", lang="pt")
+    return _SENTIMENT_ANALYZER
+
 
 def setup_logging():
     """Set up the logging module."""

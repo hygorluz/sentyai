@@ -12,9 +12,10 @@ class TestApplication(unittest.TestCase):
 
     def test_create_application(self):
         """Test the function that creates a FastAPI application."""
-        app = create_application()
-        routes = [x.name for x in app.routes]
-        self.assertIsNotNone(app)
-        self.assertIsInstance(app, FastAPI)
-        self.assertIn('health', routes)
-        self.assertIn('sentiments', routes)
+        with patch("service.application.create_sentiment_analyzer"):
+            app = create_application()
+            routes = [x.name for x in app.routes]
+            self.assertIsNotNone(app)
+            self.assertIsInstance(app, FastAPI)
+            self.assertIn('health', routes)
+            self.assertIn('sentiments', routes)

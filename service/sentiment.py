@@ -6,8 +6,7 @@ from typing import Optional
 from pydantic import ValidationError
 
 from service.schemas import Sentiment, MessageReference
-
-from service.utils import get_sentiment_analyzer
+from service.utils import create_sentiment_analyzer
 
 
 def calculate_sentiment(message_reference: MessageReference, use_cached_sentiment: bool) -> Sentiment | None:
@@ -23,7 +22,7 @@ def calculate_sentiment(message_reference: MessageReference, use_cached_sentimen
     start_time = time.time()
     sentiment_result: Optional[Sentiment] = None
     try:
-        analyzer = get_sentiment_analyzer()
+        analyzer = create_sentiment_analyzer()
 
         result = analyzer.predict(message_reference.message)
 

@@ -59,7 +59,7 @@ class MessageReference(CustomBaseModel, BaseModel):
                                                          and other.id.lower().strip() == self.id.lower().strip()))
 
     @model_validator(mode='before')
-    def fix_id(cls, values):
+    def fix_id(cls, values):  # NOQA: N805 - cls usage
         """Generate the ids from messages."""
         # Ensure the elrond data is correct
         if values.get('message'):
