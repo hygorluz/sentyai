@@ -7,7 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from service.configs import configs
 from service.endpoints import health, sentiments
 from service.schemas import (HealthcheckResult, PrettyJSONResponse, SentimentResults)
-from service.utils import setup_logging
+from service.utils import setup_logging, get_sentiment_analyzer
 
 
 def create_application() -> FastAPI:
@@ -59,8 +59,13 @@ def create_application() -> FastAPI:
         response.headers["X-Service-Version"] = configs.service_version
         return response
 
+    # Generating the sentiment analyzer
+    get_sentiment_analyzer()
+
     # Returns the created API instance
     return app
+
+
 
 
 # Debugger entry point only

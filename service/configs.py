@@ -33,8 +33,9 @@ class Config:
     cache_folder: str = os.path.dirname(os.path.dirname(os.path.realpath(__file__))) + '/cache'
     cache_time_in_seconds: int = int(os.environ.get('CACHE_TIME_IN_SECONDS', 120 * 60))
 
-    # Sentiments storage settings
+    # Sentiments settings
     dry_run: bool = str2bool(os.environ.get('DRY_RUN', 'False'))
+    max_messages_per_request: int = int(os.environ.get('MAX_MESSAGE_PER_REQUEST', 10))
 
 
 # Loaded configs

@@ -35,3 +35,4 @@ debug*.csv
 /.scannerwork/
 
 /*.png
+gunicorn.pid

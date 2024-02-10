@@ -4,7 +4,7 @@ from datetime import datetime
 from typing import Optional, Any
 
 from humps import camelize
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 from starlette.responses import Response
 
 
@@ -57,6 +57,14 @@ class MessageReference(CustomBaseModel, BaseModel):
         return isinstance(other, MessageReference) and (self.__hash__() == other.__hash__() or
                                                         (other.id is not None and self.id is not None
                                                          and other.id.lower().strip() == self.id.lower().strip()))
+
+    @model_validator(mode='before')
+    def fix_id(cls, values):
+        """Generate the ids from messages."""
+        # Ensure the elrond data is correct
+        if values.get('message'):
+            values['id'] = str(hash(values.get('message')))
+        return values
 
 
 class Sentiment(MessageReference):

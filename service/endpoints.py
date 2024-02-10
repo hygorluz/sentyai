@@ -3,7 +3,7 @@ import logging
 import time
 from multiprocessing.pool import ThreadPool
 from threading import active_count
-from typing import List
+from typing import List, Optional
 
 from fastapi import Response, status, BackgroundTasks
 from fastapi.exceptions import HTTPException
@@ -47,15 +47,15 @@ def sentiments(requested_payload: MessagesPayloadList, background_tasks: Backgro
     sentiment_results: List[Sentiment] = []
     if requested_payload and requested_payload.messages:
 
-        def sentiment_result_callback(sentiment_result: list[Sentiment]):
+        def sentiment_result_callback(sentiment_result: Optional[Sentiment]):
             if sentiment_result:
-                sentiment_results.extend(sentiment_result)
+                sentiment_results.append(sentiment_result)
 
         def sentiment_error_callback(error):
             logging.error(f"Unexpected error occurred when trying to calculate the sentiment. {type(error)}: {error}")
 
         start_time_data_access: float = time.time()
-        if active_count() > configs.max_threads_size_service:
+        if active_count() > configs.max_messages_per_request:
             time.sleep(1)
         aux_pool = None
 
@@ -74,7 +74,7 @@ def sentiments(requested_payload: MessagesPayloadList, background_tasks: Backgro
         logging.debug(f"Finishing data access process in {time.time() - start_time_data_access}...")
         start_time_calculation: float = time.time()
 
-        if aux_pool and (active_count() > configs.max_threads_size_service):
+        if aux_pool and (active_count() > configs.max_messages_per_request):
             aux_pool.terminate()
             time.sleep(0.5)
 

@@ -8,6 +8,10 @@ fastapi~=0.104.1
 gunicorn~=21.2.0
 str2bool~=1.1
 pyhumps~=3.8.0
+numpy==1.26.4
+pysentimiento==0.7.2
+scipy==1.12.0
+transformers==4.32.1
 
 # Tests requirements
 yapf~=0.40.2
