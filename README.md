@@ -10,6 +10,7 @@ The SentyAI is a sentiment analysis AI to classify messages in positive, negativ
 - **/docs** - Swagger UI.
 - **/redoc** - ReDoc UI.
 - **/health** - Health checker endpoint.
+- **/** - The Demo page of the SentyAI
 
 ## Documentation
 
@@ -51,3 +52,5 @@ Python directly alternative:
 * https://pymongo.readthedocs.io/en/stable/
 * https://pypi.org/project/transformers/
 * https://huggingface.co/
+* https://www.starlette.io/templates/
+* https://www.starlette.io/staticfiles/

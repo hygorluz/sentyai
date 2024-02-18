@@ -7,6 +7,8 @@ from typing import List, Optional
 
 from fastapi import Response, status, BackgroundTasks
 from fastapi.exceptions import HTTPException
+from fastapi.templating import Jinja2Templates
+from fastapi import Request
 
 from service.configs import configs
 from service.data_access import store_sentiment_scores
@@ -28,6 +30,13 @@ def health(response: Response):
     if return_obj:
         response.status_code = status.HTTP_503_SERVICE_UNAVAILABLE
     return return_obj
+
+
+def demo(request: Request):
+    """Display a fake website with a prototype GUI for the bot."""
+    context = {'request': request}
+    templates = Jinja2Templates(directory=configs.templates_folder)
+    return templates.TemplateResponse("index.html", context=context)
 
 
 def sentiments(requested_payload: MessagesPayloadList, background_tasks: BackgroundTasks = None) -> SentimentResults:

@@ -5,9 +5,12 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from service.configs import configs
-from service.endpoints import health, sentiments
+from service.endpoints import (health, sentiments, demo)
 from service.schemas import (HealthcheckResult, PrettyJSONResponse, SentimentResults)
 from service.utils import setup_logging, create_sentiment_analyzer
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+import os
 
 
 def create_application() -> FastAPI:
@@ -51,6 +54,20 @@ def create_application() -> FastAPI:
                       status_code=200,
                       tags=["sentiment"],
                       description="Calculate the sentiment of a list of messages")
+
+
+    # Mount static files
+    app.mount("/static", StaticFiles(directory=configs.static_folder), name="static")
+    # Register the demo endpoint
+    app.add_api_route(
+        path='/',
+        name='demo',
+        endpoint=demo,
+        response_class=HTMLResponse,
+        methods=['GET'],
+        status_code=200,
+        tags=['demo'],
+        description='Display a fake website with a prototype GUI for the bot.')
 
     # Brands the app version in the response headers
     @app.middleware("http")
