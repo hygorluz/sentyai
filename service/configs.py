@@ -43,6 +43,11 @@ class Config:
     static_folder: str = ROOT_DIR + '/static'
     templates_folder: str = ROOT_DIR + '/templates'
 
+    # Mongo settings
+    mongo_uri: str = os.environ.get("MONGODB_URI", "mongodb://sentiment_mongo:27017")
+    mongo_database: str = os.environ.get("MONGODB_DATABASE", "sentyai")
+    mongo_collection_sentiments: str = os.environ.get("MONGODB_COLLECTION_SENTIMENTS", "sentiments")
+    mongo_collection_messages: str = os.environ.get("MONGODB_COLLECTION_MESSAGES", "messages")
 
 
 # Loaded configs
