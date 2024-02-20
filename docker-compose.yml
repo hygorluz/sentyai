@@ -24,8 +24,8 @@ services:
       - ./:/usr/src/app/:rw
 
   # MongoDB Server
-  sentiment_mongo:
-    container_name: sentiment_mongo
+  sentiment-mongo:
+    container_name: sentiment-mongo
     image: mongo
     restart: unless-stopped
     ports:
