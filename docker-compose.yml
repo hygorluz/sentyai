@@ -15,17 +15,17 @@ services:
     restart: unless-stopped
     environment:
       DRY_RUN: "False"
-      MONGODB_URI: mongodb://playwright_mongo:27017
+      MONGODB_URI: mongodb://senty-mongo:27017
     ports:
       - "8080:8080"   # Port not used
     links:
-      - sentiment_mongo
+      - senty
     volumes:
       - ./:/usr/src/app/:rw
 
   # MongoDB Server
-  sentiment-mongo:
-    container_name: sentiment-mongo
+  senty-mongo:
+    container_name: senty-mongo
     image: mongo
     restart: unless-stopped
     ports:

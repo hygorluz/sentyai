@@ -15,8 +15,8 @@ class Config:
     # The url-friendly name of the service
     service_name: str = os.environ.get('SERVICE_NAME', 'sentyai')
 
-    # The user-friendly name of the service
-    service_title: str = os.environ.get('SERVICE_NAME', 'SentyAI')
+    # The user-friendly title of the service
+    service_title: str = os.environ.get('SERVICE_TITLE', 'SentyAI')
 
     # A short description of the service
     service_description: str = os.environ.get('SERVICE_DESCRIPTION',
