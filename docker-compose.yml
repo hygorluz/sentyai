@@ -18,18 +18,5 @@ services:
       MONGODB_URI: mongodb://senty-mongo:27017
     ports:
       - "8080:8080"   # Port not used
-    links:
-      - senty-mongo
     volumes:
       - ./:/usr/src/app/:rw
-
-  # MongoDB Server
-  senty-mongo:
-    container_name: senty-mongo
-    image: mongo
-    restart: unless-stopped
-    ports:
-      - "27017:27017"
-    volumes:
-      # MongoDB startup scripts
-      - ./mongo/init-scripts:/docker-entrypoint-initdb.d/
