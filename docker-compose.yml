@@ -19,7 +19,7 @@ services:
     ports:
       - "8080:8080"   # Port not used
     links:
-      - senty
+      - senty-mongo
     volumes:
       - ./:/usr/src/app/:rw
 
