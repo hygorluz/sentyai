@@ -27,7 +27,3 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Lint with flake8
-      run: |
-        # stop the build if there are Python syntax errors or undefined names
-        exec gunicorn "service.application:create_application()" --workers 1 --worker-class uvicorn.workers.UvicornWorker --threads 8 --max-requests 100 --bind 0.0.0.0:8080
