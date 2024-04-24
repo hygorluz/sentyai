@@ -1,7 +1,7 @@
 # Brief summary of exposed ports and services:
 # sentiments  -  8081/tcp
 
-version: '3.11'
+version: '3.3'
 
 services:
 
