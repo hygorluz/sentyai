@@ -1,0 +1,18 @@
+name: steps examples
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  jobx:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configuração do Python 3.10
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+
+      - name: Verificação da versão do Python
+        run: python --version
